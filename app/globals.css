@@ -75,3 +75,44 @@
 .tab-style-one .nav-link:hover {
   color: var(--heading-color);
 }
+
+  .menu-item-title {
+    max-width: 150px;
+  }
+
+@media (max-width: 500px) {
+  .menu-title-name {
+    font-size: 57px;
+  }
+  .menu-item-title {
+    font-size: 20px;
+    max-width: 103px;
+    word-break: normal;
+  }
+
+  .menu-item-content {
+    overflow: hidden;
+            height: 68px;
+  }
+
+  .price-text {
+    font-size: 20px !important;
+}
+
+.home-page-menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start !important;
+}
+
+.home-page-menu .dots {
+  margin-left: 0 !important;
+}
+
+.home-page-menu .price {
+  margin-left: 0 !important;
+}
+
+}

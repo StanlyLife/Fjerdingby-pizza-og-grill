@@ -91,36 +91,6 @@ const Sidebar = () => {
   );
 };
 
-// const SearchBtn = () => {
-//   const [toggleSearch, setToggleSearch] = useState(false);
-
-//   let domNode = useClickOutside(() => {
-//     setToggleSearch(false);
-//   });
-//   return (
-//     <div className="nav-search py-10" ref={domNode}>
-//       <button
-//         className="far fa-search"
-//         onClick={() => setToggleSearch(!toggleSearch)}
-//       />
-//       <form
-//         onSubmit={(e) => {
-//           e.preventDefault();
-//           setToggleSearch(false);
-//         }}
-//         className={toggleSearch ? "" : "hide"}
-//       >
-//         <input
-//           type="text"
-//           placeholder="Search"
-//           className="searchbox"
-//           required=""
-//         />
-//         <button type="submit" className="searchbutton far fa-search" />
-//       </form>
-//     </div>
-//   );
-// };
 
 const MobileMenu = () => {
   const [toggle, setToggle] = useState(false);
@@ -140,7 +110,7 @@ const MobileMenu = () => {
                 <div className="logo">
                   <Link href="/">
                     <img
-                      src="assets/images/logos/logo.png"
+                      src="assets/images/logos/logo2.png"
                       alt="Logo"
                       title="Logo"
                     />
@@ -154,7 +124,7 @@ const MobileMenu = () => {
                     <div className="mobile-logo">
                       <Link href="/">
                         <img
-                          src="assets/images/logos/logo.png"
+                          src="assets/images/logos/logo2.png"
                           alt="Logo"
                           title="Logo"
                         />
@@ -292,12 +262,12 @@ const Header = () => {
               <div className="logo-outer">
                 <div className="logo">
                   <Link href="/">
-                    {/* <img
+                    <img
                       src="assets/images/logos/logo.png"
                       alt="Logo"
                       title="Logo"
-                    /> */}
-                    <p style={{
+                    />
+                    {/* <p style={{
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -306,7 +276,7 @@ const Header = () => {
                       color: "white",
                       fontWeight: "900",
                       textTransform: "uppercase",
-                    }}>Fjerdingby pizza og grill</p>
+                    }}>Fjerdingby pizza og grill</p> */}
                   </Link>
                 </div>
               </div>

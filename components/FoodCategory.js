@@ -32,7 +32,7 @@ const FoodCategory = () => {
               </div>
               <div className="content">
                 <h4>
-                  <Link href="menu-restaurant">God kvalitetskjøtt</Link>
+                  <Link href="menu-restaurant">Godt kvalitetskjøtt</Link>
                 </h4>
                 <p>Alle våre burgere lages av norsk storfekjøtt</p>
               </div>

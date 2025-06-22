@@ -496,7 +496,7 @@ const Footer3 = () => {
             >
               <div className="footer-widget footer-text">
                 <div className="footer-title">
-                  <h5>Follow Us</h5>
+                  <h5>Følg oss</h5>
                 </div>
                 <div className="social-style-one mt-5">
                   <Link href="contact">
@@ -649,7 +649,7 @@ const Footer5 = () => {
                 data-aos-offset={50}
               >
                 <div className="footer-title">
-                  <h5>Follow Us</h5>
+                  <h5>Følg oss</h5>
                 </div>
                 <div className="social-style-one mt-5">
                   <Link

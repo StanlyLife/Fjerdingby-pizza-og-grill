@@ -26,13 +26,13 @@ const Item = ({ item }) => {
     }}
   />
 </div>
-      <div className="content">
+      <div className="content menu-item-content">
         <h5>
-          <span className="title" style={{maxWidth: 150, textAlign: "left"}}>{item.title}</span> <span className="dots" />{" "}
-            {!item.price2 && <span className="price" style={{width: "175px", textWrap: "nowrap"}}>{item.price}</span>}
+          <span className="title menu-item-title" style={{textAlign: "left"}}>{item.title}</span> <span className="dots" />{" "}
+            {!item.price2 && <span className="price price-text" style={{width: "175px", textWrap: "nowrap"}}>{item.price}</span>}
           {item.price2 && <div style={{ position: "relative", marginBottom: 10 }}>
-            <span className="price" style={{width: "175px", textWrap: "nowrap"}}>{item.price}</span>
-            <span className="price" style={{textWrap: "nowrap", position: "absolute", right: 0, top: 24 }}>{item.price2}</span>
+            <span className="price price-text" style={{width: "175px", textWrap: "nowrap"}}>{item.price}</span>
+            <span className="price price-text" style={{textWrap: "nowrap", position: "absolute", right: 0, top: 24 }}>{item.price2}</span>
           </div>}
         </h5>
         <p style={{textAlign: "left"}}>{item.decs}</p>
@@ -342,7 +342,7 @@ const RestaurantMenu = ({ menus }) => {
             },
             {
               id: 10,
-              title: "Chicken nuggets tallerken (8stk)",
+              title: "Nuggets tallerken (8stk)",
               price: "149kr",
               decs: "",
               img: "https://smilelevering.com/wp-content/uploads/2021/09/c017d2e2-7ad8-11eb-935f-cabe328652e3_kebabtallerken-1024x575.jpeg",
@@ -566,7 +566,7 @@ const RestaurantMenu = ({ menus }) => {
     <div className="food-menu-tab-area">
       {items.map(menu => (
         <div key={menu.id} className="menu-group mb-5 text-center">
-          <h1>{menu.title}</h1>
+          <h1 className="menu-title-name">{menu.title}</h1>
           <div className="row justify-content-center">
             {menu.items.map(item => (
               <div className="col-lg-6 pb-30" key={`${menu.id}-${menu.title}`}>
