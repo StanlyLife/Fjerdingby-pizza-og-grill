@@ -1,4 +1,4 @@
-// File: C:\Users\stian\Documents\ENK Stian Håve\Prosjekter\Fjerdingby pizza og grill\themeforest-vtb022N0-wellfood-fast-food-restaurant-next-js-template\WellFood\React Template\app\menu-restaurant\page.js
+// File: C:\Users\stian\Documents\ModernaSolutions\Prosjekter\Fjerdingby-pog\prosjekt\app\menu-restaurant\page.js
 import * as entry from '../../../../app/menu-restaurant/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -19,9 +19,9 @@ const page = () => {
         }}
       >
         <span className="marquee-wrap style-two text-white">
-          <span className="marquee-inner left">PIZZA & GRILL</span>
-          <span className="marquee-inner left">PIZZA & GRILL</span>
-          <span className="marquee-inner left">PIZZA & GRILL</span>
+          <span className="marquee-inner left"> PIZZA & GRILL</span>
+          <span className="marquee-inner left"> PIZZA & GRILL</span>
+          <span className="marquee-inner left"> PIZZA & GRILL</span>
         </span>
         <div className="container">
           <div className="row align-items-end">
@@ -1016,7 +1016,7 @@ const page = () => {
       </section> */}
       {/* Newsletter Area end */}
       {/* Instagram area start */}
-      <InstagramArea />
+      {/* <InstagramArea /> */}
       {/* Instagram area end */}
     </WellFoodLayout>
   );

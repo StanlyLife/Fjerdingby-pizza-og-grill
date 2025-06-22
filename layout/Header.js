@@ -1,6 +1,5 @@
 "use client";
 import { wellfoodUtility } from "@/utility";
-import useClickOutside from "@/utility/useClickOutside";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 

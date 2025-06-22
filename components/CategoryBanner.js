@@ -18,7 +18,7 @@ const CategoryBanner = () => {
                   "url(assets/images/banner/category-banner-two1.png)",
               }}
             >
-              <span className="price">Kun 150kr</span>
+              <span className="price">Kun 149kr</span>
               <h3>Kebab
                 tallerken</h3>
               <div className="ratting">
@@ -29,8 +29,8 @@ const CategoryBanner = () => {
                 <i className="fas fa-star" />
                 <span></span>
               </div>
-              <Link href="shop" className="theme-btn style-two">
-                Bestill nå <i className="far fa-arrow-alt-right" />
+              <Link href="menu-restaurant" className="theme-btn style-two">
+                Se menyen <i className="far fa-arrow-alt-right" />
               </Link>
               <div className="food-image">
                 <img
@@ -54,8 +54,8 @@ const CategoryBanner = () => {
                   "url(assets/images/banner/category-banner-two2.png)",
               }}
             >
-              <span className="price">fra 120kr</span>
-              <h3>Vår spesial pizza</h3>
+              <span className="price">fra 149kr</span>
+              <h3>Medium pizza</h3>
               <div className="ratting">
                 <i className="fas fa-star" />
                 <i className="fas fa-star" />
@@ -64,12 +64,12 @@ const CategoryBanner = () => {
                 <i className="fas fa-star" />
                 <span></span>
               </div>
-              <Link href="shop" className="theme-btn">
-                Bestill nå <i className="far fa-arrow-alt-right" />
+            <Link href="menu-restaurant" className="theme-btn">
+                Se menyen <i className="far fa-arrow-alt-right" />
               </Link>
               <div className="food-image">
                 <img
-                  src="assets/images/banner/category-banner-food2.png"
+                  src="https://cdn.sanity.io/images/dycwrm08/production/261e6458a058af0ee1ee3af3d94d5c97b0e41dbd-1000x997.png"
                   alt="Food"
                 />
               </div>
@@ -89,8 +89,8 @@ const CategoryBanner = () => {
                   "url(assets/images/banner/category-banner-two1.png)",
               }}
             >
-              <span className="price">Kun 130kr</span>
-              <h3>Vegetar burger</h3>
+              <span className="price">Fra 99kr</span>
+              <h3>Cheese burger</h3>
               <div className="ratting">
                 <i className="fas fa-star" />
                 <i className="fas fa-star" />
@@ -99,8 +99,8 @@ const CategoryBanner = () => {
                 <i className="fas fa-star" />
                 <span></span>
               </div>
-              <Link href="shop" className="theme-btn style-two">
-                Bestill nå <i className="far fa-arrow-alt-right" />
+            <Link href="menu-restaurant" className="theme-btn style-two">
+                Se menyen <i className="far fa-arrow-alt-right" />
               </Link>
               <div className="food-image">
                 <img

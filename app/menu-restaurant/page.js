@@ -1,5 +1,4 @@
-import { AboutUs4 } from "@/components/AboutUs";
-import Burger from "@/components/Burger";
+"use client";
 import CategoryBanner from "@/components/CategoryBanner";
 import Headline from "@/components/Headline";
 import PageBanner from "@/components/PageBanner";
@@ -7,7 +6,7 @@ import RestaurantMenu from "@/components/RestaurantMenu";
 import WellFoodLayout from "@/layout/WellFoodLayout";
 const page = () => {
   return (
-    <WellFoodLayout>
+    <WellFoodLayout footer={5}>
       {/* Page Banner Start */}
       <PageBanner pageTitle={"Fjerdingby pizza og grill - meny"} />
       {/* Page Banner End */}
@@ -24,11 +23,11 @@ const page = () => {
       <CategoryBanner />
       {/* Category Banner area end */}
       {/* Burger Area start */}
-      <section className="burger-area pt-100 rpt-70 pb-130 rpb-100 rel z-1">
+      {/* <section className="burger-area pt-100 rpt-70 pb-130 rpb-100 rel z-1">
         <div className="container">
           <Burger />
         </div>
-      </section>
+      </section> */}
       {/* Burger Area end */}
     </WellFoodLayout>
   );

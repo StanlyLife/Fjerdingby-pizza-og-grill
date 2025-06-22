@@ -1,25 +1,6 @@
 "use client";
-import React, { createRef } from "react";
-import { CSSTransition } from "react-transition-group";
+import React from "react";
 
-class CustomFade extends React.Component {
-  nodeRef = createRef();
-  render() {
-    const { children, className, ...props } = this.props;
-    return (
-      <CSSTransition
-        {...props}
-        nodeRef={this.nodeRef}
-        classNames="fade"
-        timeout={300}
-      >
-        <div ref={this.nodeRef} className={className}>
-          {children}
-        </div>
-      </CSSTransition>
-    );
-  }
-}
 
 const Item = ({ item }) => {
   return (

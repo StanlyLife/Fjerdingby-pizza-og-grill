@@ -652,17 +652,52 @@ const Footer5 = () => {
                   <h5>Follow Us</h5>
                 </div>
                 <div className="social-style-one mt-5">
-                  <Link href="contact">
-                    <i className="fab fa-facebook-f" />
+                  <Link
+                    href="https://www.tiktok.com/@fjerdingby.grill"
+                    target="_blank"
+                  >
+                    <i className="fab fa-tiktok" />
                   </Link>
-                  <Link href="contact">
-                    <i className="fab fa-twitter" />
+                  <Link
+                    href="https://www.foodora.no/restaurant/hkun/fjerdingby-pizza-and-grill"
+                    target="_blank"
+                    style={{
+                      overflow: "hidden",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src="https://icon2.cleanpng.com/20180624/oel/aazodp70l.webp"
+                      alt="Foodora logo"
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
                   </Link>
-                  <Link href="contact">
-                    <i className="fab fa-linkedin-in" />
-                  </Link>
-                  <Link href="contact">
-                    <i className="fab fa-instagram" />
+
+                  <Link
+                    href="https://wolt.com/nb/nor/lillestrom/restaurant/fjerdingby-pizza-grill?srsltid=AfmBOoooLBMGwnZrD6oGGjf7j5rb39mXZYY2DxqTzFvcpepC5N46AJY5"
+                    target="_blank"
+                    style={{
+                      overflow: "hidden",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src="https://brandlogos.net/wp-content/uploads/2025/05/wolt-logo_brandlogos.net_dijtc.png"
+                      alt="Wolt logo"
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
                   </Link>
                 </div>
               </div>
@@ -707,8 +742,8 @@ const Footer5 = () => {
             <div className="col-lg-5">
               <div className="copyright-text text-center text-lg-start">
                 <p>
-                  Copyright 2025 <Link href="/">Moderna Solutions AS</Link>. All Rights
-                  Reserved{" "}
+                  Copyright 2025 <Link href="/">Moderna Solutions AS</Link>. All
+                  Rights Reserved{" "}
                 </p>
               </div>
             </div>
