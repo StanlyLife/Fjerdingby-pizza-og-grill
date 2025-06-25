@@ -19,12 +19,9 @@ const page = () => {
         }}
       >
         <span className="marquee-wrap style-two text-white">
-          <span className="marquee-inner left"> PIZZA & GRILL	
-&#10240;</span>
-          <span className="marquee-inner left"> PIZZA & GRILL	
-&#10240;</span>
-          <span className="marquee-inner left"> PIZZA & GRILL	
-&#10240;</span>
+          <span className="marquee-inner left"> PIZZA & GRILL &#10240;</span>
+          <span className="marquee-inner left"> PIZZA & GRILL &#10240;</span>
+          <span className="marquee-inner left"> PIZZA & GRILL &#10240;</span>
         </span>
         <div className="container">
           <div className="row align-items-end">
@@ -39,7 +36,7 @@ const page = () => {
                 <p>
                   Vi har et stort utvalg av pizza, burger, grillmat og kebab.
                 </p>
-                <p style={{color: "gold"}}>
+                <p style={{ color: "gold", textTransform: "uppercase" }}>
                   Åpen fra 14:00 til 22:00 alle dager!
                 </p>
                 {/* <Link href="shop" className="theme-btn style-two">
@@ -49,7 +46,11 @@ const page = () => {
             </div>
             <div className="col-lg-6">
               <div className="hero-three-image">
-                <img src="assets/images/hero/hero-three-stian-2.webp" alt="Hero"  style={{marginLeft: "-48px"}}/>
+                <img
+                  src="assets/images/hero/hero-three-stian-2.webp"
+                  alt="Hero"
+                  style={{ marginLeft: "-48px" }}
+                />
                 <div
                   className="offer-badge"
                   style={{
@@ -346,9 +347,12 @@ const page = () => {
                 data-aos-duration={1500}
                 data-aos-offset={50}
               >
-                <span className="sub-title mb-5">Våre mest poppulære retter</span>
+                <span className="sub-title mb-5">
+                  Våre mest poppulære retter
+                </span>
                 <h2>
-                  Vi serverer en rekke måltider, inkludert burgere, pizza og grillmat
+                  Vi serverer en rekke måltider, inkludert burgere, pizza og
+                  grillmat
                 </h2>
               </div>
             </div>
@@ -362,10 +366,25 @@ const page = () => {
                 data-aos-offset={50}
               >
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="assets/images/food/burger-menu1.jpg"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/cheeseburger tallerken alle størrelser_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -378,10 +397,25 @@ const page = () => {
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                  <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="assets/images/food/burger-menu2.jpg"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/crispy chicken_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -394,10 +428,25 @@ const page = () => {
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="assets/images/food/burger-menu3.jpg"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/cheeseburger tallerken alle størrelser_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -426,10 +475,25 @@ const page = () => {
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="https://www.pngplay.com/wp-content/uploads/2/Kebab-Tikka-Transparent-File.png"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/kebab i pita_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -451,10 +515,25 @@ const page = () => {
                 data-aos-offset={50}
               >
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="https://static.wixstatic.com/media/6b3973_b26b12b91d7f479783992682050bd75f~mv2.png/v1/crop/x_0,y_2,w_801,h_407/fill/w_260,h_132,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Web%20elements-08.png"
-                      alt="Mangler bilde"
+                      alt="Food Menu"
+                      src="assets/images/food/kebabtallerken_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -467,10 +546,25 @@ const page = () => {
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="https://static.vecteezy.com/system/resources/previews/027/707/328/non_2x/doner-kebab-isolated-on-transparent-background-generative-ai-free-png.png"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/wjojsbkfp61spdk7wmxy_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -483,10 +577,25 @@ const page = () => {
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="https://rendezvous-oslo.no/wp-content/uploads/2024/07/Asset-14.png"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/løvstektallerken_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">
@@ -509,16 +618,31 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Pizza margherita</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">$25</span>
+                      <span className="price">149kr</span>
                     </h5>
-                    <p>Diverse menu features array of delectable</p>
+                    <p>Stor pizza fra 199kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                  <div className="image">
+                   <div
+                    className="image"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      margin: "0 auto",
+                      marginRight: "16px",
+                    }}
+                  >
                     <img
-                      src="https://arctic-restaurant.com/wp-content/uploads/2023/02/Talarken-falafel.png"
-                      alt="Burger Menu"
+                      alt="Food Menu"
+                      src="assets/images/food/falaffeltallerken_compressed.webp"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                   <div className="content">

@@ -730,7 +730,7 @@ const Footer5 = () => {
               <a href="#">Saladr</a>
             </li>
           </ul> */}
-          <p>Laget av Moderna Media digitalbyrå</p>
+          <a href="https://modernamedia.no/" title="moderna media digitalbyrå - utvikler og designer nettsider for bedrifter" target="_blank">Laget av Moderna Media digitalbyrå</a>
           {/* Scroll Top Button */}
           <button className="scroll-top scroll-to-target" data-target="html">
             <i className="fas fa-arrow-alt-up" />
@@ -742,7 +742,7 @@ const Footer5 = () => {
             <div className="col-lg-5">
               <div className="copyright-text text-center text-lg-start">
                 <p>
-                  Copyright 2025 <Link href="/">Moderna Solutions AS</Link>. All
+                  Copyright 2025 <Link href="https://modernamedia.no/">Moderna Solutions AS</Link>. All
                   Rights Reserved{" "}
                 </p>
               </div>
