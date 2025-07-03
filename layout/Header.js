@@ -91,7 +91,6 @@ const Sidebar = () => {
   );
 };
 
-
 const MobileMenu = () => {
   const [toggle, setToggle] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
@@ -110,7 +109,7 @@ const MobileMenu = () => {
                 <div className="logo">
                   <Link href="/">
                     <img
-                      src="assets/images/logos/logo2.png"
+                      src="assets/images/logos/black-and-white-logo.png"
                       alt="Logo"
                       title="Logo"
                     />
@@ -124,7 +123,7 @@ const MobileMenu = () => {
                     <div className="mobile-logo">
                       <Link href="/">
                         <img
-                          src="assets/images/logos/logo2.png"
+                          src="assets/images/logos/black-and-white-logo.png"
                           alt="Logo"
                           title="Logo"
                         />
@@ -149,7 +148,7 @@ const MobileMenu = () => {
                     }`}
                   >
                     <ul className="navigation clearfix">
-                      <li className="dropdown" >
+                      <li className="dropdown">
                         <a href="/">Hjem</a>
                       </li>
                       <li className="dropdown">
@@ -263,7 +262,7 @@ const Header = () => {
                 <div className="logo">
                   <Link href="/">
                     <img
-                      src="assets/images/logos/logo.png"
+                      src="assets/images/logos/black-and-white-logo.png"
                       alt="Logo"
                       title="Logo"
                     />
@@ -287,7 +286,7 @@ const Header = () => {
                     <div className="mobile-logo">
                       <Link href="/">
                         <img
-                          src="assets/images/logos/logo.png"
+                          src="assets/images/logos/black-and-white-logo.png"
                           alt="Logo"
                           title="Logo"
                         />
@@ -460,7 +459,6 @@ const Header = () => {
                   />
                 </div>
               </div> */}
-              
             </div>
           </div>
           <div className="bg-lines">
