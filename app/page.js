@@ -366,7 +366,7 @@ const page = () => {
                 data-aos-offset={50}
               >
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -391,9 +391,9 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Cheese burger (200gr)</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">159kr</span>
+                      <span className="price">169kr</span>
                     </h5>
-                    <p>med fries +10kr</p>
+                    <p>med fries +16kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
@@ -422,13 +422,13 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Crispy Chicken burger</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">99kr</span>
+                      <span className="price">109kr</span>
                     </h5>
-                    <p>med friest +30kr</p>
+                    <p>med fries +40kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -455,7 +455,7 @@ const page = () => {
                       <span className="dots" />{" "}
                       <span className="price">130kr</span>
                     </h5>
-                    <p>med fries + 35kr</p>
+                    <p>med fries + 40kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
@@ -469,13 +469,13 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Kebab pizza</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">149kr</span>
+                      <span className="price">159kr</span>
                     </h5>
-                    <p>Stor pizza 199kr</p>
+                    <p>Stor pizza 220kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -502,7 +502,7 @@ const page = () => {
                       <span className="dots" />{" "}
                       <span className="price">99kr</span>
                     </h5>
-                    <p>Stor 120kr</p>
+                    <p>Stor 129kr</p>
                   </div>
                 </div>
               </div>
@@ -515,7 +515,7 @@ const page = () => {
                 data-aos-offset={50}
               >
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -540,13 +540,13 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Kebabtallerken</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">149kr</span>
+                      <span className="price">159kr</span>
                     </h5>
                     <p>Pakket med ferskt kebabkjøtt</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -573,11 +573,11 @@ const page = () => {
                       <span className="dots" />{" "}
                       <span className="price">110kr</span>
                     </h5>
-                    <p>stor 125kr</p>
+                    <p>stor 135kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -618,13 +618,13 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Pizza margherita</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">149kr</span>
+                      <span className="price">159kr</span>
                     </h5>
-                    <p>Stor pizza fra 199kr</p>
+                    <p>Stor pizza fra 209kr</p>
                   </div>
                 </div>
                 <div className="food-menu-item style-two">
-                   <div
+                  <div
                     className="image"
                     style={{
                       width: "100px",
@@ -649,7 +649,7 @@ const page = () => {
                     <h5 className="home-page-menu">
                       <span className="title">Falaffeltallerken</span>{" "}
                       <span className="dots" />{" "}
-                      <span className="price">139kr</span>
+                      <span className="price">149kr</span>
                     </h5>
                     <p></p>
                   </div>
