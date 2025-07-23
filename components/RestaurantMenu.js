@@ -440,7 +440,7 @@ const RestaurantMenu = ({ menus }) => {
             {
               id: 5,
               title: "Cheeseburger",
-              price: "250 gram - 199kr",
+              price: "250 gram - 179kr",
               decs: "Diverse menu features array delectable",
               img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdp20o9NY1dVAsKfKqNUZs9XAIk5A0_ndo0A&s",
             },
