@@ -178,7 +178,8 @@ const RestaurantMenu = ({ menus }) => {
             {
               id: 13,
               title: "vegetar",
-              price: "stor 210kr",
+              price: "medium 149kr",
+              price2: "stor 210kr",
               // price2: "stor 199kr",
               decs: "Paprika, løk. sopp, oliven, mais",
               img: "https://pbs.twimg.com/media/DaClp24XUAA8Bwc?format=jpg&name=4096x4096",
@@ -194,7 +195,8 @@ const RestaurantMenu = ({ menus }) => {
             {
               id: 15,
               title: "Valgfri",
-              price: "stor 240kr",
+              price: "medium 169kr",
+              price2: "stor 240kr",
               // price2: "stor 240kr",
               decs: "Valgfrie ingredienser",
               img: "assets/images/food/rm-food2.png",
@@ -521,7 +523,7 @@ const RestaurantMenu = ({ menus }) => {
             {
               id: 2,
               title: "Brus",
-              price: "0.5L 25kr",
+              price: "0.5L 35kr",
               price2: "1.5L 50kr",
               decs: "",
               img: "https://www.fodors.com/wp-content/uploads/2019/03/HERO_Worlds_Best_Soda_Bundaberg_shutterstock_679079920.jpg",

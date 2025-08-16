@@ -37,15 +37,7 @@ const page = () => {
                   Vi har et stort utvalg av pizza, burger, grillmat og kebab.
                 </p>
                 <p style={{ color: "gold", textTransform: "uppercase" }}>
-                  Åpen fra 14:00 til 22:00 alle dager!
-                  <br />
-                  <i
-                    style={{
-                      color: "white",
-                    }}
-                  >
-                    Åpen fra 12:00 til 22:00 fra og med august!
-                  </i>
+                  Åpen fra 12:00 til 22:00 alle dager!
                 </p>
                 {/* <Link href="shop" className="theme-btn style-two">
                   order now <i className="far fa-arrow-alt-right" />
