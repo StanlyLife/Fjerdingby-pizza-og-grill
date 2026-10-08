@@ -1,1159 +1,370 @@
-"use client";
-import Burger from "@/components/Burger";
-import CategoryBanner from "@/components/CategoryBanner";
-import FoodCategory from "@/components/FoodCategory";
-import Headline from "@/components/Headline";
-import InstagramArea from "@/components/InstagramArea";
-import WellFoodLayout from "@/layout/WellFoodLayout";
-import { sliderProps } from "@/utility/sliderProps";
+import Image from "next/image";
 import Link from "next/link";
-import Slider from "react-slick";
-const page = () => {
+import Icon from "@/components/Icon";
+import { FAQ } from "@/data/faq";
+import { PHONE_NB, SITE } from "@/data/site";
+import styles from "./home.module.css";
+
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
+const CATEGORIES = [
+  { title: "Pizza", sub: "14 varianter · fra 189 kr", link: "Se pizzamenyen", href: "/meny#pizza", img: "/images/mat/pizza-eske.webp", alt: "Pepperonipizza i pizzaeske" },
+  { title: "Kebab og rull", sub: "Pita og rull · fra 109 kr", link: "Se kebabmenyen", href: "/meny#kebab", img: "/images/mat/kebabrull.webp", alt: "Kebabrull med salat og mais" },
+  { title: "Burgere", sub: "Smash, cheese og crispy · fra 109 kr", link: "Se burgermenyen", href: "/meny#smashburger", img: "/images/mat/cheeseburger.webp", alt: "Cheeseburger med pommes frites" },
+  { title: "Middagstallerkener", sub: "9 tallerkener · fra 149 kr", link: "Se tallerkenene", href: "/meny#tallerkener", img: "/images/mat/kebabtallerken.webp", alt: "Kebabtallerken med pommes frites og salat" },
+];
+
+const FAVORITES = [
+  { name: "Kebab pizza", price: "fra 189 kr", text: "Gatekjøkkenklassikeren med kebabkjøtt. Medium 189 kr, stor 249 kr.", img: "/images/mat/pizza-kebab.webp", alt: "Kebab pizza med mye ost og kebabkjøtt", href: "/meny#pizza" },
+  { name: "Kebab i pita", price: "fra 109 kr", text: "Klassisk kebab i pitabrød. Medium 109 kr, stor 139 kr.", img: "/images/mat/kebab-i-pita.webp", alt: "Kebab i pita med salat og mais", href: "/meny#kebab" },
+  { name: "Kebabtallerken", price: "179 kr", text: "Pakket med ferskt kebabkjøtt.", img: "/images/mat/kebabtallerken.webp", alt: "Kebabtallerken med pommes frites og salat", href: "/meny#tallerkener" },
+  { name: "Cheeseburger", price: "fra 109 kr", text: "Fra 100 til 250 gram. Med pommes frites fra 149 kr.", img: "/images/mat/cheeseburger.webp", alt: "Cheeseburger med pommes frites", href: "/meny#burger" },
+  { name: "Crispy chicken burger", price: "120 kr", text: "Sprø kyllingburger. Med pommes frites 165 kr.", img: "/images/mat/crispy-chicken.webp", alt: "Crispy chicken burger med salat", href: "/meny#burger" },
+  { name: "Løvstektallerken", price: "159 kr", text: "Inkluderer pommes frites.", img: "/images/mat/lovstektallerken.webp", alt: "Løvstektallerken med pommes frites og salat", href: "/meny#tallerkener" },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+};
+
+export default function Home() {
   return (
-    <WellFoodLayout footer={5}>
-      {" "}
-      <section
-        className="hero-area-three pt-250 pb-220 rpb-100 rel z-1"
-        style={{
-          backgroundImage: "url(assets/images/background/hero-three.png)",
-        }}
-      >
-        <span className="marquee-wrap style-two text-white">
-          <span className="marquee-inner left"> PIZZA & GRILL &#10240;</span>
-          <span className="marquee-inner left"> PIZZA & GRILL &#10240;</span>
-          <span className="marquee-inner left"> PIZZA & GRILL &#10240;</span>
-        </span>
-        <div className="container">
-          <div className="row align-items-end">
-            <div className="col-lg-6">
-              <div
-                className="hero-content-three mt-250 rmt-0 rmb-55 text-white"
-                data-aos="fade-up"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <h1>Fjerdingby pizza og grill</h1>
-                <p>
-                  Vi har et stort utvalg av pizza, burger, grillmat og kebab.
-                </p>
-                <p style={{ color: "gold", textTransform: "uppercase" }}>
-                  Åpen fra 12:00 til 22:00!
-                  <br />
-                  <i
-                    style={{
-                      color: "white",
-                    }}
-                  >
-                    Åpen fra 14:00 til 22:00 på lørdager!
-                  </i>
-                </p>
-                {/* <Link href="shop" className="theme-btn style-two">
-                  order now <i className="far fa-arrow-alt-right" />
-                </Link> */}
-              </div>
+    <>
+      {/* ---------- Hero ---------- */}
+      <section className={styles.hero}>
+        <div className={`container ${styles.heroGrid}`}>
+          <div className={styles.heroText}>
+            <p className="etikett accent">Pizza · Kebab · Burger · Grill</p>
+            <h1 className="h1">
+              Pizza, kebab og burger i <span className="accent">Fjerdingby</span>
+            </h1>
+            <p className={`ingress ${styles.heroLead}`}>
+              Din lokale pizza- og grillrestaurant i Rælingen. Ring og bestill, og hent maten hos oss på {SITE.street}.
+            </p>
+            <div className={styles.heroButtons}>
+              <Link className="btn btn-primary" href="/meny">
+                <Icon name="bestikk" />
+                Se menyen
+              </Link>
+              <a className="btn btn-outline-light" href={SITE.phoneHref}>
+                <Icon name="telefon" />
+                Ring {PHONE_NB}
+              </a>
             </div>
-            <div className="col-lg-6">
-              <div className="hero-three-image">
-                <img
-                  src="assets/images/hero/hero-three-stian-2.webp"
-                  alt="Hero"
-                  style={{ marginLeft: "-48px" }}
-                />
-                <div
-                  className="offer-badge"
-                  style={{
-                    backgroundImage:
-                      "url(assets/images/shapes/offer-circle-shape.png)",
-                  }}
-                >
-                  <span>
-                    fra 99 <br />
-                    kr
-                  </span>
-                </div>
-              </div>
+            <ul className={styles.chips}>
+              <li className="chip">
+                <Icon name="klokke" />
+                Åpent alle dager 14–22
+              </li>
+              <li className="chip">
+                <Icon name="kartnal" />
+                {SITE.street}, {SITE.city}
+              </li>
+              <li className="chip">
+                <Icon name="pose" />
+                Ring, bestill og hent
+              </li>
+            </ul>
+          </div>
+          <div className={styles.heroArt}>
+            <div className={styles.heroPhoto}>
+              <Image
+                src="/images/mat/pizza-pepperoni.webp"
+                alt="Pepperonipizza sett ovenfra"
+                fill
+                priority
+                sizes="(min-width: 900px) 440px, 256px"
+              />
             </div>
+            <p className={styles.badge}>
+              <strong>14 pizzaer</strong>
+              <span>Medium fra 189 kr</span>
+            </p>
           </div>
         </div>
       </section>
-      {/* Hero Area End */}
-      {/* Food Category Area start */}
-      <FoodCategory />
-      {/* Food Category Area end */}
-      {/* Headline area start */}
-      <Headline mb="50" />
-      {/* Headline Area end */}
-      {/* About Us Area start */}
-      {/* <section className="about-us-area pb-100 rpb-70 rel z-1">
+
+      {/* ---------- Kategorier ---------- */}
+      <section className="section" id="kategorier" aria-labelledby="kategorier-tittel">
         <div className="container">
-          <div className="row align-items-end">
-            <div className="col-xl-8">
-              <div className="row">
-                <div className="col-lg-8">
-                  <div
-                    className="section-title mt-55 mb-25"
-                    data-aos="fade-up"
-                    data-aos-duration={1500}
-                    data-aos-offset={50}
-                  >
-                    <span className="sub-title mb-5">learn About wellfood</span>
-                    <h2>we provide premium Quality food for your health</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="row align-items-center">
-                <div
-                  className="col-md-6"
-                  data-aos="fade-up"
-                  data-aos-duration={1500}
-                  data-aos-offset={50}
-                >
-                  <div className="about-video mb-30">
-                    <img
-                      src="assets/images/about/about-video-bg.jpg"
-                      alt="About Video"
-                    />
-                    <a
-                      href="https://www.youtube.com/watch?v=9Y7ma241N8k"
-                      className="mfp-iframe video-play"
-                    >
-                      <i className="fas fa-play" />
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className="col-md-6"
-                  data-aos="fade-up"
-                  data-aos-delay={100}
-                  data-aos-duration={1500}
-                  data-aos-offset={50}
-                >
-                  <div className="about-middle-content mb-30">
-                    <h4>we have 25+ Years Of Experience</h4>
-                    <p>
-                      Welcome too restaurant, where culinary excellence meets
-                      warm hospitality in every dish we nestled in the heart of
-                      City name our eatery invites
-                    </p>
-                    <div className="about-btn-customer mt-40">
-                      <Link href="about" className="theme-btn style-two">
-                        learn more us <i className="far fa-arrow-alt-right" />
-                      </Link>
-                      <div className="customer">
-                        <h6>5m+ Happy customer</h6>
-                        <div className="customer-image">
-                          <img
-                            src="assets/images/about/customer1.png"
-                            alt="Customer"
-                          />
-                          <img
-                            src="assets/images/about/customer2.png"
-                            alt="Customer"
-                          />
-                          <img
-                            src="assets/images/about/customer3.png"
-                            alt="Customer"
-                          />
-                          <img
-                            src="assets/images/about/customer4.png"
-                            alt="Customer"
-                          />
-                          <img
-                            src="assets/images/about/customer5.png"
-                            alt="Customer"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-4"
-              data-aos="fade-up"
-              data-aos-delay={150}
-              data-aos-duration={1500}
-              data-aos-offset={50}
-            >
-              <div className="about-image-part style-three mb-30">
-                <img src="assets/images/about/about2.jpg" alt="About" />
-                <div
-                  className="quality-food"
-                  style={{
-                    backgroundImage: "url(assets/images/shapes/about-star.png)",
-                  }}
-                >
-                  <span className="for-border" />
-                  <span className="text">
-                    quality <br />
-                    food
+          <header className="section-head">
+            <p className="etikett">Menyen vår</p>
+            <h2 className="h2" id="kategorier-tittel">
+              Hva har du lyst på i dag?
+            </h2>
+            <p className="ingress">Velg en kategori og se hele menyen med priser.</p>
+          </header>
+          <ul className={styles.catGrid}>
+            {CATEGORIES.map((c) => (
+              <li key={c.title}>
+                <Link className={styles.catCard} href={c.href}>
+                  <span className={styles.catImg}>
+                    <Image src={c.img} alt={c.alt} fill sizes="(min-width: 900px) 282px, 50vw" />
                   </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* About Us Area end */}
-      {/* Category Banner area start */}
-      <CategoryBanner />
-      {/* Category Banner area end */}
-      {/* Burger Area start */}
-      {/* <section className="burger-area pt-100 rpt-70 pb-130 rpb-100 rel z-1">
-        <Burger />
-      </section> */}
-      {/* Burger Area end */}
-      {/* Headline area start */}
-      {/* <div className="headline-area bgc-black pt-120 rpt-90 rel z-2">
-        <span className="marquee-wrap white-text">
-          <span className="marquee-inner left">
-            <span className="marquee-item">Italian pizza</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">delicious foods</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">burger king</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-          </span>
-          <span className="marquee-inner left">
-            <span className="marquee-item">Italian pizza</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">delicious foods</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">burger king</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-          </span>
-          <span className="marquee-inner left">
-            <span className="marquee-item">Italian pizza</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">delicious foods</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">burger king</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-          </span>
-        </span>
-        <div className="headline-shapes">
-          <div className="shape one">
-            <img src="assets/images/shapes/tomato.png" alt="Shape" />
-          </div>
-          <div className="shape two">
-            <img src="assets/images/shapes/burger.png" alt="Shape" />
-          </div>
-        </div>
-      </div> */}
-      {/* Headline Area end */}
-      {/* Special Offer Area start */}
-      {/* <section className="special-offer-area-two bgc-black pt-105 rpt-85 pb-130 rpb-100 rel z-1">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <div
-                className="offer-content-two text-center text-white rmb-55"
-                data-aos="fade-right"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <img
-                  src="assets/images/offer/special-burger.png"
-                  alt="Special burger"
-                />
-                <div className="section-title mt-45 mb-25">
-                  <h2>Delicious burger</h2>
-                </div>
-                <p>
-                  Nestled in the heart of the city, our restaurant is a culinary
-                  haven where flavors come alive memories are made.
-                </p>
-                <ul className="offer-countdown-wrap mt-40 mb-25">
-                  <li>
-                    <span id="days" />
-                    Days
-                  </li>
-                  <li>
-                    <span id="hours" />
-                    Hours
-                  </li>
-                  <li>
-                    <span id="minutes" />
-                    Min
-                  </li>
-                  <li>
-                    <span id="seconds" />
-                    Sec
-                  </li>
-                </ul>
-                <Link href="shop" className="theme-btn style-three">
-                  order now <i className="far fa-arrow-alt-right" />
+                  <span className={styles.catBody}>
+                    <span className={`h3 ${styles.catTitle}`}>{c.title}</span>
+                    <span className={`liten ${styles.muted}`}>{c.sub}</span>
+                    <span className={styles.catLink}>
+                      <span className={styles.catLinkLong}>{c.link}</span>
+                      <span className={styles.catLinkShort}>Se meny</span>
+                      <Icon name="pil" size={18} />
+                    </span>
+                  </span>
                 </Link>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="offer-image style-two"
-                data-aos="fade-left"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <img src="assets/images/offer/burger.png" alt="Burger Image" />
-                <div
-                  className="offer-badge"
-                  style={{
-                    backgroundImage:
-                      "url(assets/images/shapes/offer-circle-shape.png)",
-                  }}
-                >
-                  <span>
-                    only <br />
-                    <span className="price">$59</span>
-                  </span>
-                </div>
-                <span className="marquee-wrap style-two text-white">
-                  <span className="marquee-inner left">burger</span>
-                  <span className="marquee-inner left">burger</span>
-                  <span className="marquee-inner left">burger</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="testimonials-shapes">
-          <div className="shape one">
-            <img src="assets/images/shapes/hero-shape5.png" alt="Shape" />
-          </div>
-          <div className="shape two">
-            <img src="assets/images/shapes/hero-shape3.png" alt="Shape" />
-          </div>
-        </div>
-      </section> */}
-      {/* Special Offer Area end */}
-      {/* Popular Menu Area start */}
-      <section className="popular-menu-area-three pt-130 rpt-100 pb-115 rpb-90 rel z-1">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-7 col-md-8">
-              <div
-                className="section-title text-center mb-50"
-                data-aos="fade-up"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <span className="sub-title mb-5">
-                  Våre mest poppulære retter
-                </span>
-                <h2>
-                  Vi serverer en rekke måltider, inkludert burgere, pizza og
-                  grillmat
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div className="row no-gap">
-            <div className="col-lg-6">
-              <div
-                className="popular-menu-wrap"
-                data-aos="fade-left"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/cheeseburger tallerken alle størrelser_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Cheese burger (200gr)</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">169kr</span>
-                    </h5>
-                    <p>med fries +16kr</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/crispy chicken_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Crispy Chicken burger</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">109kr</span>
-                    </h5>
-                    <p>med fries +40kr</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/cheeseburger tallerken alle størrelser_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Classic Smash burger</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">130kr</span>
-                    </h5>
-                    <p>med fries + 40kr</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div className="image">
-                    <img
-                      src="https://cdn.sanity.io/images/dycwrm08/production/261e6458a058af0ee1ee3af3d94d5c97b0e41dbd-1000x997.png"
-                      alt="Burger Menu"
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Kebab pizza</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">159kr</span>
-                    </h5>
-                    <p>Stor pizza 220kr</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/kebab i pita_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Kebab i pita</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">99kr</span>
-                    </h5>
-                    <p>Stor 129kr</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="popular-menu-wrap"
-                data-aos="fade-right"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/kebabtallerken_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Kebabtallerken</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">159kr</span>
-                    </h5>
-                    <p>Pakket med ferskt kebabkjøtt</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/wjojsbkfp61spdk7wmxy_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Kebabrull</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">110kr</span>
-                    </h5>
-                    <p>stor 135kr</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/løvstektallerken_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Løvstektallerken</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">149kr</span>
-                    </h5>
-                    <p>Inkluderer fries</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div className="image">
-                    <img
-                      src="https://png.pngtree.com/png-vector/20241102/ourmid/pngtree-top-view-of-a-margherita-pizza-png-image_14226822.png"
-                      alt="Burger Menu"
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Pizza margherita</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">159kr</span>
-                    </h5>
-                    <p>Stor pizza fra 209kr</p>
-                  </div>
-                </div>
-                <div className="food-menu-item style-two">
-                  <div
-                    className="image"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      margin: "0 auto",
-                      marginRight: "16px",
-                    }}
-                  >
-                    <img
-                      alt="Food Menu"
-                      src="assets/images/food/falaffeltallerken_compressed.webp"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="content">
-                    <h5 className="home-page-menu">
-                      <span className="title">Falaffeltallerken</span>{" "}
-                      <span className="dots" />{" "}
-                      <span className="price">149kr</span>
-                    </h5>
-                    <p></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="menu-items-shape">
-          <div className="shape one">
-            <img src="assets/images/shapes/menu-item1.png" alt="Shape" />
-          </div>
-          <div className="shape two">
-            <img src="assets/images/shapes/menu-item2.png" alt="Shape" />
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-      {/* Popular Menu Area end */}
-      {/* Headline area start */}
-      <Headline />
-      {/* Headline Area end */}
-      {/* Testimonials Three Area start */}
-      {/* <section
-        className="testimonials-three rel z-1 bgc-primary pt-130 rpt-100 pb-215 rpb-150"
-        style={{
-          backgroundImage:
-            "url(assets/images/testimonials/testimonials-two-bg.png)",
-        }}
-      >
-        <div className="container">
-          <div className="row justify-content-center rmb-30">
-            <div className="col-xl-10 col-lg-11">
-              <div className="testimonials-three-content rel z-1 text-white">
-                <div
-                  className="section-title text-center mb-45"
-                  data-aos="fade-up"
-                  data-aos-duration={1500}
-                  data-aos-offset={50}
-                >
-                  <span className="sub-title text-white mb-5">
-                    customer feedback
+
+      {/* ---------- Favoritter ---------- */}
+      <section className="section section-white" aria-labelledby="favoritter-tittel">
+        <div className={`container ${styles.favWrap}`}>
+          <header className={`section-head ${styles.favHeader}`}>
+            <p className="etikett">Favoritter</p>
+            <h2 className="h2" id="favoritter-tittel">
+              Utvalgte favoritter
+            </h2>
+            <p className="ingress">Et lite utvalg fra menyen. Alle priser er inkludert mva.</p>
+          </header>
+          <Link className={`btn btn-outline-dark ${styles.favAll}`} href="/meny">
+            <Icon name="bestikk" />
+            Se hele menyen
+          </Link>
+          <ul className={styles.favGrid}>
+            {FAVORITES.map((d) => (
+              <li key={d.name}>
+                <Link className={styles.dish} href={d.href}>
+                  <span className={styles.dishImg}>
+                    <Image src={d.img} alt={d.alt} fill sizes="(min-width: 900px) 384px, 88px" />
                   </span>
-                  <h2>what our customer’s say us</h2>
-                </div>
-                <Slider
-                  {...sliderProps.testimonialsTwoCarousel}
-                  className="testimonials-two-carousel"
-                  data-aos="fade-up"
-                  data-aos-duration={1500}
-                  data-aos-offset={50}
-                >
-                  <div className="testimonial-two-item style-two">
-                    <div className="image">
-                      <div className="quote">
-                        <i className="flaticon-quote" />
-                      </div>
-                      <img
-                        src="assets/images/testimonials/author-three.jpg"
-                        alt="Author"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="text">
-                        Renowned for its versatility in the kitchen, Red King
-                        Crab can prepared in various ways, from simple steaming
-                        or boiling to elaborate preparations such as grilling
-                        incorporating weather loving
-                      </div>
-                      <span className="author">Randy R. Pennington</span>
-                      <span className="designation">web designer</span>
-                    </div>
-                  </div>
-                  <div className="testimonial-two-item style-two">
-                    <div className="image">
-                      <div className="quote">
-                        <i className="flaticon-quote" />
-                      </div>
-                      <img
-                        src="assets/images/testimonials/author-three.jpg"
-                        alt="Author"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="text">
-                        Renowned for its versatility in the kitchen, Red King
-                        Crab can prepared in various ways, from simple steaming
-                        or boiling to elaborate preparations such as grilling
-                        incorporating weather loving
-                      </div>
-                      <span className="author">Salvador I. Burton</span>
-                      <span className="designation">Manager</span>
-                    </div>
-                  </div>
-                  <div className="testimonial-two-item style-two">
-                    <div className="image">
-                      <div className="quote">
-                        <i className="flaticon-quote" />
-                      </div>
-                      <img
-                        src="assets/images/testimonials/author-three.jpg"
-                        alt="Author"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="text">
-                        Renowned for its versatility in the kitchen, Red King
-                        Crab can prepared in various ways, from simple steaming
-                        or boiling to elaborate preparations such as grilling
-                        incorporating weather loving
-                      </div>
-                      <span className="author">Randy R. Pennington</span>
-                      <span className="designation">web designer</span>
-                    </div>
-                  </div>
-                  <div className="testimonial-two-item style-two">
-                    <div className="image">
-                      <div className="quote">
-                        <i className="flaticon-quote" />
-                      </div>
-                      <img
-                        src="assets/images/testimonials/author-three.jpg"
-                        alt="Author"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="text">
-                        Renowned for its versatility in the kitchen, Red King
-                        Crab can prepared in various ways, from simple steaming
-                        or boiling to elaborate preparations such as grilling
-                        incorporating weather loving
-                      </div>
-                      <span className="author">Salvador I. Burton</span>
-                      <span className="designation">Manager</span>
-                    </div>
-                  </div>
-                </Slider>
-              </div>
-            </div>
-          </div>
+                  <span className={styles.dishBody}>
+                    <span className={styles.dishTop}>
+                      <span className={`h3 ${styles.dishName}`}>{d.name}</span>
+                      <span className={styles.price}>{d.price}</span>
+                    </span>
+                    <span className={styles.dishText}>{d.text}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="testimonials-shapes">
-          <div className="shape one">
-            <img src="assets/images/shapes/testi-shape1.png" alt="Shape" />
-          </div>
-          <div className="shape two">
-            <img src="assets/images/shapes/testi-shape2.png" alt="Shape" />
-          </div>
-          <div className="shape three">
-            <img src="assets/images/shapes/testi-shape3.png" alt="Shape" />
-          </div>
-          <div className="shape four">
-            <img src="assets/images/shapes/testi-shape4.png" alt="Shape" />
-          </div>
-          <div className="shape five">
-            <img src="assets/images/shapes/testi-shape5.png" alt="Shape" />
-          </div>
-        </div>
-      </section> */}
-      {/* Testimonials Three Area end */}
-      {/* Client Area start */}
-      {/* <div className="client-area rel z-2">
-        <div className="container container-1520">
-          <div className="client-wrap">
-            <Slider {...sliderProps.clientActive} className="client-active">
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client1.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client2.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client3.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client4.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client5.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client6.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client1.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client2.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client3.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client4.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client5.png"
-                  alt="Client Logo"
-                />
-              </a>
-              <a href="#" className="client-item">
-                <img
-                  src="assets/images/clients/client6.png"
-                  alt="Client Logo"
-                />
-              </a>
-            </Slider>
-          </div>
-        </div>
-      </div> */}
-      {/* Client Area end */}
-      {/* Blog Area start */}
-      {/* <section className="blog-area pt-130 rpt-100 pb-80 rpb-50 rel z-1">
+      </section>
+
+      {/* ---------- Ring, bestill og hent ---------- */}
+      <section className="section section-dark" id="bestill" aria-labelledby="bestill-tittel">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-12">
-              <div
-                className="section-title text-center mb-50"
-                data-aos="fade-up"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <span className="sub-title mb-5">latest news &amp; blog</span>
-                <h2>get every single updates latest</h2>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-xl-4 col-md-6">
-              <div
-                className="blog-item"
-                data-aos="fade-up"
-                data-aos-delay={50}
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <div className="image">
-                  <img src="assets/images/blog/blog1.jpg" alt="Blog" />
-                  <ul className="blog-meta">
-                    <li>
-                      <a href="#">Quality Food</a>
-                    </li>
-                    <li>
-                      <a href="#">March 25, 2024</a>
-                    </li>
-                    <li>
-                      <a href="#">comments (5)</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="content">
-                  <h4>
-                    <Link href="blog-details">
-                      Culinary Chronicles Exploring Gastronomic Wonders at
-                      foodking Restaurant
-                    </Link>
-                  </h4>
-                  <p>
-                    Restaurant where culinary excellence meets hospitality in
-                    every dish we serve settled in the heart
-                  </p>
-                  <Link href="blog-details" className="read-more">
-                    Read more <i className="far fa-arrow-alt-right" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div
-                className="blog-item"
-                data-aos="fade-up"
-                data-aos-delay={100}
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <div className="image">
-                  <img src="assets/images/blog/blog2.jpg" alt="Blog" />
-                  <ul className="blog-meta">
-                    <li>
-                      <a href="#">Quality Food</a>
-                    </li>
-                    <li>
-                      <a href="#">March 25, 2024</a>
-                    </li>
-                    <li>
-                      <a href="#">comments (5)</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="content">
-                  <h4>
-                    <Link href="blog-details">
-                      Culinary Chronicles Exploring Gastronomic Wonders at
-                      foodking Restaurant
-                    </Link>
-                  </h4>
-                  <p>
-                    Restaurant where culinary excellence meets hospitality in
-                    every dish we serve settled in the heart
-                  </p>
-                  <Link href="blog-details" className="read-more">
-                    Read more <i className="far fa-arrow-alt-right" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div
-                className="blog-item"
-                data-aos="fade-up"
-                data-aos-delay={150}
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <div className="image">
-                  <img src="assets/images/blog/blog3.jpg" alt="Blog" />
-                  <ul className="blog-meta">
-                    <li>
-                      <a href="#">Quality Food</a>
-                    </li>
-                    <li>
-                      <a href="#">March 25, 2024</a>
-                    </li>
-                    <li>
-                      <a href="#">comments (5)</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="content">
-                  <h4>
-                    <Link href="blog-details">
-                      Culinary Chronicles Exploring Gastronomic Wonders at
-                      foodking Restaurant
-                    </Link>
-                  </h4>
-                  <p>
-                    Restaurant where culinary excellence meets hospitality in
-                    every dish we serve settled in the heart
-                  </p>
-                  <Link href="blog-details" className="read-more">
-                    Read more <i className="far fa-arrow-alt-right" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <header className="section-head">
+            <p className="etikett">Bestill</p>
+            <h2 className="h2" id="bestill-tittel">
+              Ring, bestill og hent
+            </h2>
+            <p className="ingress">Vi har ikke levering. Bestill på telefon og hent maten hos oss i Fjerdingby.</p>
+          </header>
+          <ul className={styles.orderGrid}>
+            <li className={styles.orderCard}>
+              <span className={styles.orderIcon}>
+                <Icon name="telefon" size={26} />
+              </span>
+              <h3 className="h3">Ring og bestill</h3>
+              <p>Ring oss på {PHONE_NB} og si hva du vil ha.</p>
+              <a className="btn btn-primary" href={SITE.phoneHref}>
+                <Icon name="telefon" />
+                Ring {PHONE_NB}
+              </a>
+            </li>
+            <li className={styles.orderCard}>
+              <span className={styles.orderIcon}>
+                <Icon name="pose" size={26} />
+              </span>
+              <h3 className="h3">Hent hos oss</h3>
+              <p>Hent maten på {SITE.street}, midt i Fjerdingby.</p>
+              <a className="btn btn-primary" href={SITE.mapUrl} target="_blank" rel="noopener">
+                <Icon name="veibeskrivelse" />
+                Veibeskrivelse
+              </a>
+            </li>
+            <li className={styles.orderCard}>
+              <span className={styles.orderIcon}>
+                <Icon name="klokke" size={26} />
+              </span>
+              <h3 className="h3">Åpent hver dag</h3>
+              <p>Vi har åpent alle dager fra 14:00 til 22:00.</p>
+              <Link className="btn btn-primary" href="/meny">
+                <Icon name="bestikk" />
+                Se menyen
+              </Link>
+            </li>
+          </ul>
         </div>
-      </section> */}
-      {/* Blog Area end */}
-      {/* Headline area start */}
-      {/* <div className="headline-area rel z-1">
-        <span className="marquee-wrap">
-          <span className="marquee-inner left">
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-          </span>
-          <span className="marquee-inner left">
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-          </span>
-          <span className="marquee-inner left">
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-            <span className="marquee-item">newsletter subscribe</span>
-            <span className="marquee-item">
-              <i className="flaticon-star" />
-            </span>
-          </span>
-        </span>
-        <div className="headline-shapes">
-          <div className="shape one">
-            <img src="assets/images/shapes/tomato.png" alt="Shape" />
-          </div>
-        </div>
-      </div> */}
-      {/* Headline Area end */}
-      {/* Newsletter Area start */}
-      {/* <section className="newsletter-area py-65 mb-5 rel z-1">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6">
-              <div
-                className="section-title rmb-25"
-                data-aos="fade-up"
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <span className="sub-title mb-5">join our newsletter</span>
-                <h2>subscribe follow newsletter to get more updates</h2>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="newsletter-form-wrap"
-                data-aos="fade-up"
-                data-aos-delay={50}
-                data-aos-duration={1500}
-                data-aos-offset={50}
-              >
-                <h6>
-                  Hurry up to join us to get more offer, JOIN FOR HOT OFFERS
-                </h6>
-                <form className="newsletter-form style-two mt-15" action="#">
-                  <label htmlFor="news-email">
-                    <i className="fas fa-envelope" />
-                  </label>
-                  <input
-                    id="news-email"
-                    type="email"
-                    placeholder="Email Address"
-                    required=""
-                  />
-                  <button className="theme-btn style-two" type="submit">
-                    Subscribe <i className="far fa-arrow-alt-right" />
-                  </button>
-                </form>
-                <div className="check-field mt-15">
-                  <input id="update-news" type="checkbox" />
-                  <label htmlFor="update-news">
-                    Get 15 days update news &amp; latest offer
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="newsletter-shapes">
-          <div className="shape">
-            <img
-              src="assets/images/shapes/newsletter-pizza-shape.png"
-              alt="Shape"
+      </section>
+
+      {/* ---------- Om oss ---------- */}
+      <section className="section" id="om-oss" aria-labelledby="om-oss-tittel">
+        <div className={`container ${styles.about}`}>
+          <div className={styles.aboutImg}>
+            <Image
+              src="/images/mat/donertallerken.webp"
+              alt="Tallerken med kjøtt, pommes frites og salat"
+              fill
+              sizes="(min-width: 900px) 560px, 100vw"
             />
           </div>
+          <div className={styles.aboutText}>
+            <p className={`etikett ${styles.muted}`}>Om oss</p>
+            <h2 className="h2" id="om-oss-tittel">
+              Din lokale pizza- og grillrestaurant i Rælingen
+            </h2>
+            <p className={styles.muted}>
+              Fjerdingby Pizza &amp; Grill ligger på {SITE.street}, midt i Fjerdingby. Her får du pizza, kebab,
+              smashburgere, cheeseburgere og middagstallerkener – ring og bestill, og hent maten hos oss.
+            </p>
+            <p className={styles.muted}>
+              Vi har åpent alle dager fra 14:00 til 22:00, så det er lett å få et godt måltid – enten det er en rask
+              middag i uka eller pizzakveld med familien i helgen.
+            </p>
+            <dl className={styles.stats}>
+              <div>
+                <dt className="visually-hidden">Pizzaer på menyen</dt>
+                <dd>
+                  <strong>14</strong>
+                  <span>pizzaer på menyen</span>
+                </dd>
+              </div>
+              <div>
+                <dt className="visually-hidden">Middagstallerkener</dt>
+                <dd>
+                  <strong>9</strong>
+                  <span>middagstallerkener</span>
+                </dd>
+              </div>
+              <div>
+                <dt className="visually-hidden">Åpne dager</dt>
+                <dd>
+                  <strong>7</strong>
+                  <span>dager i uka</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
-      </section> */}
-      {/* Newsletter Area end */}
-      {/* Instagram area start */}
-      {/* <InstagramArea /> */}
-      {/* Instagram area end */}
-    </WellFoodLayout>
+      </section>
+
+      {/* ---------- Finn oss ---------- */}
+      <section className="section section-white" id="finn-oss" aria-labelledby="finn-oss-tittel">
+        <div className={`container ${styles.find}`}>
+          <div className={styles.infoCard}>
+            <header className={styles.infoHead}>
+              <p className={`etikett ${styles.muted}`}>Finn oss</p>
+              <h2 className="h2" id="finn-oss-tittel">
+                Besøk oss i Fjerdingby
+              </h2>
+            </header>
+            <div className={styles.info}>
+              <span className={styles.infoIcon}>
+                <Icon name="kartnal" size={22} />
+              </span>
+              <div>
+                <h3 className="h4">Adresse</h3>
+                <address className={styles.muted}>
+                  {SITE.street}
+                  <br />
+                  {SITE.postalCode} {SITE.city}
+                </address>
+              </div>
+            </div>
+            <div className={styles.info} id="apningstider">
+              <span className={styles.infoIcon}>
+                <Icon name="klokke" size={22} />
+              </span>
+              <div className={styles.grow}>
+                <h3 className="h4">Åpningstider</h3>
+                <p className={styles.hoursRow}>
+                  <span className={styles.muted}>{SITE.hours.days}</span>
+                  <strong>
+                    {SITE.hours.opens}–{SITE.hours.closes}
+                  </strong>
+                </p>
+              </div>
+            </div>
+            <div className={styles.info}>
+              <span className={styles.infoIcon}>
+                <Icon name="telefon" size={22} />
+              </span>
+              <div>
+                <h3 className="h4">Telefon</h3>
+                <a className={styles.muted} href={SITE.phoneHref}>
+                  {PHONE_NB}
+                </a>
+              </div>
+            </div>
+            <div className={styles.info}>
+              <span className={styles.infoIcon}>
+                <Icon name="epost" size={22} />
+              </span>
+              <div>
+                <h3 className="h4">E-post</h3>
+                <a className={`${styles.muted} ${styles.email}`} href={`mailto:${SITE.email}`}>
+                  {SITE.email}
+                </a>
+              </div>
+            </div>
+            <div className={styles.infoButtons}>
+              <a className="btn btn-primary" href={SITE.mapUrl} target="_blank" rel="noopener">
+                <Icon name="veibeskrivelse" />
+                Veibeskrivelse
+              </a>
+              <a className="btn btn-outline-dark" href={SITE.phoneHref}>
+                <Icon name="telefon" />
+                Ring oss
+              </a>
+            </div>
+          </div>
+          <a className={styles.map} href={SITE.mapUrl} target="_blank" rel="noopener" aria-label="Åpne kart over Fjerdingby Pizza & Grill i Google Maps">
+            <span className={styles.pin}>
+              <Icon name="kartnal" size={30} />
+            </span>
+            <span className={styles.mapLabel}>
+              <strong>Fjerdingby Pizza &amp; Grill</strong>
+              <span>{SITE.street}</span>
+              <span className={styles.mapCta}>Åpne i Google Maps →</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      {/* ---------- Spørsmål og svar ---------- */}
+      <section className="section" id="faq" aria-labelledby="faq-tittel">
+        <div className={`container ${styles.faq}`}>
+          <header className="section-head">
+            <p className="etikett">Spørsmål og svar</p>
+            <h2 className="h2" id="faq-tittel">
+              Ofte stilte spørsmål
+            </h2>
+            <p className="ingress">
+              Finner du ikke svaret? Ring oss på <a href={SITE.phoneHref}>{PHONE_NB}</a>.
+            </p>
+          </header>
+          <div className={styles.faqList}>
+            {FAQ.map(({ q, a }, i) => (
+              <details key={q} className={styles.faqItem} open={i === 0}>
+                <summary>
+                  <span className="h4">{q}</span>
+                  <Icon name="pluss" className={styles.faqIcon} />
+                </summary>
+                <p className={styles.muted}>{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+    </>
   );
-};
-export default page;
+}

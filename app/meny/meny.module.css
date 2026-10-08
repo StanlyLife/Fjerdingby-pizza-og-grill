@@ -1,0 +1,223 @@
+.muted {
+  color: var(--tekst-dempet);
+}
+
+/* ---------- page top ---------- */
+.top {
+  background: var(--kull-800);
+  color: var(--tekst-invers);
+  padding: 28px 0 40px;
+}
+.top :global(.container) {
+  display: grid;
+  gap: 16px;
+}
+.crumbs {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--tekst-invers-dempet);
+}
+.crumbs a {
+  text-decoration: none;
+}
+.crumbs a:hover {
+  color: var(--tekst-invers);
+}
+.crumbs [aria-current] {
+  color: var(--oransje-500);
+}
+.lead {
+  color: var(--tekst-invers-dempet);
+  max-width: 680px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  padding-top: 8px;
+}
+@media (min-width: 900px) {
+  .top {
+    padding: 48px 0 64px;
+  }
+  .top :global(.container) {
+    gap: 18px;
+  }
+}
+
+/* ---------- categories ---------- */
+.body {
+  padding: 32px 0 56px;
+}
+.list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+.card {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  padding: 24px 20px 16px;
+  border-radius: var(--radius-card);
+  background: var(--hvit);
+  border: 1px solid var(--linje);
+  /* html already pads for the header; this leaves room for the sticky tabs */
+  scroll-margin-top: 76px;
+}
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cardText {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.cardText h2 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.thumb {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--krem-100);
+}
+.thumb img {
+  object-fit: cover;
+}
+@media (max-width: 419px) {
+  .thumb {
+    display: none;
+  }
+}
+.columns {
+  display: grid;
+  min-width: 0;
+}
+.col {
+  min-width: 0;
+}
+.colHead,
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(var(--cols, 1), 76px);
+  gap: 12px;
+  align-items: center;
+}
+.colHead {
+  padding-bottom: 4px;
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tekst-dempet);
+}
+.colHead span:not(:first-child),
+.priceCell {
+  text-align: right;
+}
+/* on phones the two columns stack, so the second header is not needed */
+.col + .col .colHead {
+  display: none;
+}
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.row {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--linje);
+}
+.name {
+  font-weight: 700;
+}
+.priceCell {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.allergy {
+  padding: 18px 24px;
+  border-radius: 16px;
+  background: var(--oransje-100);
+}
+@media (min-width: 700px) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px;
+  }
+  .col + .col .colHead {
+    display: grid;
+  }
+}
+@media (min-width: 900px) {
+  .body {
+    padding: 64px 0 96px;
+  }
+  .list {
+    gap: 32px;
+  }
+  .card {
+    gap: 28px;
+    padding: 40px 40px 32px;
+    border-radius: 24px;
+  }
+  .cardTop {
+    gap: 24px;
+  }
+  .thumb {
+    width: 96px;
+    height: 96px;
+    border-radius: 16px;
+  }
+  .colHead,
+  .row {
+    grid-template-columns: minmax(0, 1fr) repeat(var(--cols, 1), 84px);
+    gap: 16px;
+  }
+  .row {
+    padding: 16px 0;
+  }
+}
+
+/* ---------- order band ---------- */
+.cta {
+  background: var(--kull-800);
+  color: var(--tekst-invers);
+  padding: 48px 0;
+}
+.ctaInner {
+  display: grid;
+  gap: 24px;
+}
+.ctaText {
+  display: grid;
+  gap: 10px;
+}
+.ctaText p {
+  color: var(--tekst-invers-dempet);
+}
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (min-width: 900px) {
+  .cta {
+    padding: 72px 0;
+  }
+  .ctaInner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 40px;
+  }
+}

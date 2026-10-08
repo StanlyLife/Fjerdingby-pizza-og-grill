@@ -1,0 +1,50 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tekst-invers);
+  text-decoration: none;
+}
+.logo {
+  width: 44px;
+  height: 44px;
+}
+.text {
+  display: grid;
+  gap: 2px;
+}
+.name {
+  font: 700 18px/1.1 var(--font-heading);
+}
+.sub {
+  color: var(--oransje-500);
+  font-size: 11px;
+}
+@media (min-width: 900px) {
+  .md .logo {
+    width: 60px;
+    height: 60px;
+  }
+  .md .name {
+    font-size: 22px;
+  }
+  .md .sub {
+    font-size: 13px;
+  }
+  .brand {
+    gap: 12px;
+  }
+}
+.lg .logo {
+  width: 56px;
+  height: 56px;
+}
+.lg .name {
+  font-size: 22px;
+}
+@media (min-width: 900px) {
+  .lg .logo {
+    width: 64px;
+    height: 64px;
+  }
+}

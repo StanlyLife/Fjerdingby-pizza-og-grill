@@ -1,118 +1,276 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap");
+/* Design tokens from the Figma file «Fjerdingby Pizza & Grill – Nytt nettsted» (Komponenter page). */
+:root {
+  --kull-900: #161616;
+  --kull-800: #222222;
+  --kull-700: #333333;
+  --kull-600: #424242;
+  --oransje-500: #fea621;
+  --oransje-600: #e58f0b;
+  --oransje-100: #ffefd2;
+  /* darker orange for large numbers on cream, so they keep 3:1 contrast */
+  --oransje-tekst: #b86e00;
+  --krem-50: #fff8ee;
+  --krem-100: #f6ebda;
+  --hvit: #ffffff;
+  --tekst: #1a1a1a;
+  --tekst-dempet: #5f5850;
+  --tekst-invers: #ffffff;
+  --tekst-invers-dempet: #bfb8ae;
+  --linje: #eadfcc;
+  --linje-mork: #444444;
+  --apent: #35b26f;
 
-.main-menu .navbar-collapse .mobile-menu li ul {
-  opacity: 1 !important;
-  visibility: unset !important;
+  --font-heading: var(--font-bricolage), "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--font-dm), "Segoe UI", system-ui, sans-serif;
+
+  --container: 1200px;
+  --gutter: 20px;
+  --section-y: 56px;
+  --radius-card: 20px;
+  --header-h: 68px;
 }
-.main-menu .navbar-collapse li:hover > ul {
-  visibility: visible;
-  opacity: 1;
-  top: 100%;
+@media (min-width: 900px) {
+  :root {
+    --gutter: 40px;
+    --section-y: 96px;
+    --header-h: 88px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* smooth only for in-page clicks, so a link like /meny#pizza jumps straight there on load */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+html {
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+body {
+  margin: 0;
+  background: var(--krem-50);
+  color: var(--tekst);
+  font: 400 16px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+img {
+  max-width: 100%;
+  height: auto;
   display: block;
 }
-.main-menu .navbar-collapse li ul li ul {
-  top: -2% !important;
+a {
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+:focus-visible {
+  outline: 3px solid var(--oransje-500);
+  outline-offset: 3px;
 }
 
-/* Slick slider */
-.slick-dots,
-.testimonials-three-content .testimonial-two-item {
-  display: flex !important;
+.container {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin-inline: auto;
 }
-.slick-slide {
-  padding-left: 15px;
-  padding-right: 15px;
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
-.food-category-active .slick-track .food-category-item {
-  display: flex !important;
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--oransje-500);
+  color: var(--tekst);
+  font-weight: 700;
+  text-decoration: none;
 }
-
-.testimonials-three-content .slick-active .testimonial-two-item .content,
-.testimonials-three-content .slick-active .testimonial-two-item .image img,
-.testimonials-three-content .slick-active .testimonial-two-item .image .quote {
-  opacity: 1;
-  -webkit-transform: translate(0);
-  -ms-transform: translate(0);
-  transform: translate(0);
-}
-
-.testimonials-three-content .slick-active .testimonial-two-item .image .quote {
-  -webkit-transition-delay: 0.35s;
-  -o-transition-delay: 0.35s;
-  transition-delay: 0.35s;
-}
-
-.testimonials-five-authors .slick-slide {
-  width: 100% !important;
-  padding: unset !important;
-}
-.testimonials-five-authors .slick-current .testimonial-five-author-item img {
-  width: 75px;
-  height: 75px;
-  border: 3px solid var(--primary-color);
-}
-.testimonials-five-authors .testimonial-five-author-item {
-  width: unset !important;
+.skip-link:focus {
+  top: 12px;
 }
 
-.testimonials-five-content .slick-active .testimonial-five-item:before {
-  opacity: 1;
-  bottom: 100%;
+/* ---------- type scale ---------- */
+.h1 {
+  font: 800 40px/1.06 var(--font-heading);
+  letter-spacing: -0.015em;
 }
-
-.history-progress .canvas {
-  margin-right: 30px;
+.h2 {
+  font: 800 30px/1.12 var(--font-heading);
+  letter-spacing: -0.01em;
 }
-
-.history-progress .CircularProgressbar {
-  width: 120px;
+.h2-sm {
+  font: 800 26px/1.12 var(--font-heading);
+  letter-spacing: -0.01em;
 }
-.history-progress.style-two .canvas {
-  margin-right: 0;
-  margin-bottom: 12px;
+.h3 {
+  font: 700 22px/1.24 var(--font-heading);
+  letter-spacing: -0.005em;
 }
-
-.tab-style-one .nav-link:hover {
-  color: var(--heading-color);
+.h4 {
+  font: 700 18px/1.28 var(--font-heading);
 }
-
-  .menu-item-title {
-    max-width: 150px;
+.ingress {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.liten {
+  font-size: 14px;
+  line-height: 1.45;
+}
+.etikett {
+  font: 700 13px/1.2 var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.accent {
+  color: var(--oransje-500);
+}
+@media (min-width: 900px) {
+  .h1 {
+    font-size: 68px;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
   }
-
-@media (max-width: 500px) {
-  .menu-title-name {
-    font-size: 57px;
+  .h2 {
+    font-size: 46px;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
   }
-  .menu-item-title {
+  .h2-sm {
+    font-size: 32px;
+  }
+  .ingress {
     font-size: 20px;
-    max-width: 103px;
-    word-break: normal;
+    line-height: 1.5;
   }
+}
 
-  .menu-item-content {
-    overflow: hidden;
-            height: 68px;
+/* ---------- buttons and chips (Knapp / Infobrikke) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 26px 12px 24px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font: 700 16px/1.2 var(--font-body);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.btn-primary {
+  background: var(--oransje-500);
+  color: var(--tekst);
+}
+.btn-primary:hover {
+  background: var(--oransje-600);
+}
+.btn-dark {
+  background: var(--kull-800);
+  color: var(--tekst-invers);
+}
+.btn-dark:hover {
+  background: var(--kull-700);
+}
+.btn-outline-dark {
+  border-color: var(--tekst);
+  color: var(--tekst);
+}
+.btn-outline-dark:hover {
+  background: var(--tekst);
+  color: var(--tekst-invers);
+}
+.btn-outline-light {
+  border-color: var(--tekst-invers);
+  color: var(--tekst-invers);
+}
+.btn-outline-light:hover {
+  background: var(--tekst-invers);
+  color: var(--tekst);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 10px 14px;
+  border-radius: 999px;
+  background: var(--kull-700);
+  color: var(--tekst-invers);
+  font: 500 15px/1.2 var(--font-body);
+}
+.chip svg {
+  width: 18px;
+  height: 18px;
+  color: var(--oransje-500);
+  flex: none;
+}
+@media (min-width: 900px) {
+  .chip {
+    font-size: 16px;
   }
-
-  .price-text {
-    font-size: 20px !important;
 }
 
-.home-page-menu {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start !important;
+/* ---------- section scaffolding ---------- */
+.section {
+  padding-block: var(--section-y);
 }
-
-.home-page-menu .dots {
-  margin-left: 0 !important;
+.section-dark {
+  background: var(--kull-800);
+  color: var(--tekst-invers);
 }
-
-.home-page-menu .price {
-  margin-left: 0 !important;
+.section-white {
+  background: var(--hvit);
 }
-
+.section-head {
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+.section-head .etikett {
+  color: var(--tekst-dempet);
+}
+.section-head .ingress {
+  color: var(--tekst-dempet);
+}
+.section-dark .section-head .etikett {
+  color: var(--oransje-500);
+}
+.section-dark .section-head .ingress {
+  color: var(--tekst-invers-dempet);
+}
+@media (min-width: 900px) {
+  .section-head {
+    gap: 14px;
+    margin-bottom: 40px;
+  }
 }
