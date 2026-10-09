@@ -2,6 +2,7 @@ import Link from "next/link";
 import Brand from "./Brand";
 import Icon from "./Icon";
 import MobileMenu from "./MobileMenu";
+import TodayHours from "./TodayHours";
 import { PHONE_NB, SITE } from "@/data/site";
 import styles from "./Header.module.css";
 
@@ -27,7 +28,7 @@ export default function Header() {
         <div className={styles.right}>
           <span className={styles.status}>
             <span className={styles.dot} aria-hidden="true" />
-            Åpent i dag 14–22
+            <TodayHours />
           </span>
           <a className={`btn btn-primary ${styles.call}`} href={SITE.phoneHref}>
             <Icon name="telefon" />

@@ -492,10 +492,20 @@
 .grow {
   flex: 1;
 }
+.hours {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
 .hoursRow {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+}
+.hoursRow dd {
+  margin: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 .email {
   overflow-wrap: anywhere;

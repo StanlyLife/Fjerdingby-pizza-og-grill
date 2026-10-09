@@ -40,6 +40,19 @@
 .accent {
   color: var(--oransje-500);
 }
+.hours {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+.hours dt {
+  color: var(--tekst-invers-dempet);
+  font-size: 14px;
+}
+.hours dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
 .email {
   font-size: 14px;
   overflow-wrap: anywhere;

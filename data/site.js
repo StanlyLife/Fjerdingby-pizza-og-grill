@@ -9,7 +9,13 @@ export const SITE = {
   postalCode: "2008",
   city: "Fjerdingby",
   region: "Akershus",
-  hours: { days: "Mandag–søndag", short: "Alle dager 14–22", opens: "14:00", closes: "22:00" },
+  // Opening hours, one row per group of days. `schema` uses schema.org day names.
+  hours: [
+    { days: "Mandag–fredag", opens: "12:00", closes: "22:00", schema: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
+    { days: "Lørdag", opens: "14:00", closes: "22:00", schema: ["Saturday"] },
+    { days: "Søndag", opens: "12:00", closes: "22:00", schema: ["Sunday"] },
+  ],
+  hoursShort: "Åpent 12–22 · lørdag 14–22",
   mapUrl: "https://g.co/kgs/JSRqE5f",
   tiktok: { url: "https://www.tiktok.com/@fjerdingby.grill", handle: "@fjerdingby.grill" },
 };

@@ -58,7 +58,7 @@ export default function Home() {
             <ul className={styles.chips}>
               <li className="chip">
                 <Icon name="klokke" />
-                Åpent alle dager 14–22
+                {SITE.hoursShort}
               </li>
               <li className="chip">
                 <Icon name="kartnal" />
@@ -194,7 +194,7 @@ export default function Home() {
                 <Icon name="klokke" size={26} />
               </span>
               <h3 className="h3">Åpent hver dag</h3>
-              <p>Vi har åpent alle dager fra 14:00 til 22:00.</p>
+              <p>Vi har åpent fra 12:00 til 22:00 alle dager – på lørdag fra 14:00.</p>
               <Link className="btn btn-primary" href="/meny">
                 <Icon name="bestikk" />
                 Se menyen
@@ -225,7 +225,7 @@ export default function Home() {
               smashburgere, cheeseburgere og middagstallerkener – ring og bestill, og hent maten hos oss.
             </p>
             <p className={styles.muted}>
-              Vi har åpent alle dager fra 14:00 til 22:00, så det er lett å få et godt måltid – enten det er en rask
+              Vi har åpent alle dager fra 12:00 til 22:00 (lørdag fra 14:00), så det er lett å få et godt måltid – enten det er en rask
               middag i uka eller pizzakveld med familien i helgen.
             </p>
             <dl className={styles.stats}>
@@ -284,12 +284,16 @@ export default function Home() {
               </span>
               <div className={styles.grow}>
                 <h3 className="h4">Åpningstider</h3>
-                <p className={styles.hoursRow}>
-                  <span className={styles.muted}>{SITE.hours.days}</span>
-                  <strong>
-                    {SITE.hours.opens}–{SITE.hours.closes}
-                  </strong>
-                </p>
+                <dl className={styles.hours}>
+                  {SITE.hours.map((h) => (
+                    <div key={h.days} className={styles.hoursRow}>
+                      <dt className={styles.muted}>{h.days}</dt>
+                      <dd>
+                        {h.opens}–{h.closes}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </div>
             <div className={styles.info}>

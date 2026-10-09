@@ -24,11 +24,16 @@ export default function Footer() {
         </div>
         <div className={styles.col}>
           <h2 className="etikett">Åpningstider</h2>
-          <p>
-            {SITE.hours.days}
-            <br />
-            {SITE.hours.opens}–{SITE.hours.closes}
-          </p>
+          <dl className={styles.hours}>
+            {SITE.hours.map((h) => (
+              <div key={h.days}>
+                <dt>{h.days}</dt>
+                <dd>
+                  {h.opens}–{h.closes}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
         <div className={styles.col}>
           <h2 className="etikett">Kontakt</h2>

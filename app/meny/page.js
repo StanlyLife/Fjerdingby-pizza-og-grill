@@ -65,7 +65,7 @@ export default function Menu() {
             </a>
             <span className="chip">
               <Icon name="klokke" />
-              Åpent alle dager 14–22
+              {SITE.hoursShort}
             </span>
           </div>
         </div>

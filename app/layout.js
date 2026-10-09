@@ -16,7 +16,7 @@ export const metadata = {
     template: "%s – Fjerdingby Pizza & Grill",
   },
   description:
-    "Pizza, kebab, smashburgere og middagstallerkener på Øvre Rælingsveg 194 i Fjerdingby. Åpent alle dager 14–22. Ring 92 97 60 00 og hent hos oss.",
+    "Pizza, kebab, smashburgere og middagstallerkener på Øvre Rælingsveg 194 i Fjerdingby. Åpent 12–22, lørdag 14–22. Ring 92 97 60 00 og hent hos oss.",
   applicationName: SITE.name,
   openGraph: {
     type: "website",
@@ -54,14 +54,12 @@ const restaurant = {
   priceRange: "kr 25–250",
   menu: `${SITE.url}/meny`,
   acceptsReservations: false,
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: SITE.hours.opens,
-      closes: SITE.hours.closes,
-    },
-  ],
+  openingHoursSpecification: SITE.hours.map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: h.schema,
+    opens: h.opens,
+    closes: h.closes,
+  })),
   sameAs: [SITE.tiktok.url],
 };
 
