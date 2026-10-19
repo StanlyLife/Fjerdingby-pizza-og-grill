@@ -27,6 +27,7 @@ const menuJsonLd = {
     hasMenuItem: c.dishes.map(([name, ...prices]) => ({
       "@type": "MenuItem",
       name,
+      ...(c.descriptions?.[name] ? { description: c.descriptions[name] } : {}),
       offers: prices
         .filter((p) => typeof p === "number")
         .map((p, i) => ({
@@ -111,6 +112,7 @@ export default function Menu() {
                               {kr(p)}
                             </span>
                           ))}
+                          {c.descriptions?.[name] && <span className={styles.desc}>{c.descriptions[name]}</span>}
                         </li>
                       ))}
                     </ul>

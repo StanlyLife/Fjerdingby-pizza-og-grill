@@ -141,6 +141,14 @@
 .name {
   font-weight: 700;
 }
+/* the description gets its own line under the name and prices */
+.desc {
+  grid-column: 1 / -1;
+  margin-top: -8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--tekst-dempet);
+}
 .priceCell {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -186,6 +194,9 @@
   }
   .row {
     padding: 16px 0;
+  }
+  .desc {
+    font-size: 15px;
   }
 }
 

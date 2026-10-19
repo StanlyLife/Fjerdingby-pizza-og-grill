@@ -1,6 +1,8 @@
 // The full menu. Prices come from the price update of 2 September 2026 and include VAT.
 // A dish is [name, price] or [name, price, price2] when the category has two price columns.
 // Prices that are strings are shown as they are (add-ons).
+// `descriptions` holds what is in a dish, keyed by dish name. The pizza toppings come
+// from the take-away menu of 25 August 2026.
 export const MENU = [
   {
     id: "pizza",
@@ -10,7 +12,7 @@ export const MENU = [
     imageAlt: "Pepperonipizza i pizzaeske",
     columns: ["Medium", "Stor"],
     dishes: [
-      ["Margarita", 189, 225],
+      ["Margherita", 189, 225],
       ["American", 189, 249],
       ["Trippel", 189, 249],
       ["San Marino", 189, 249],
@@ -25,6 +27,22 @@ export const MENU = [
       ["Fjerdingby spesial", 189, 249],
       ["Valgfri", 189, 249],
     ],
+    descriptions: {
+      Margherita: "Tomatsaus, mozzarella, parmesanost",
+      American: "Marinert biff, champignon, løk",
+      Trippel: "Skinke, pepperoni, champignon",
+      "San Marino": "Marinert biff, skinke, sopp, paprika, løk",
+      Taco: "Tacokjøtt, mais, jalapeño, nachochips",
+      "Pepperoni mix": "Pepperoni, kjøttdeig, ananas",
+      Superior: "Marinert kylling, pepperoni, paprika, sopp",
+      Hawaii: "Skinke, ananas",
+      "Kylling spesial": "Marinert kylling, paprika, løk, sopp",
+      "Kebab pizza": "Kebabkjøtt, mais, paprika, løk",
+      "Doner pizza": "Donerkjøtt, sopp, løk, paprika",
+      Vegetar: "Paprika, løk, sopp, oliven, mais",
+      "Fjerdingby spesial": "Marinert biff, skinke, pepperoni, paprika",
+      Valgfri: "Velg ingrediensene selv",
+    },
   },
   {
     id: "kebab",
